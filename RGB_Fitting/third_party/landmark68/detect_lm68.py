@@ -4,6 +4,18 @@ from scipy.io import loadmat
 import tensorflow as tf
 from shutil import move
 
+# Ensure compatibility with both TF 1.x and 2.x
+if tf.__version__.startswith('2'):
+    try:
+        tf.disable_v2_behavior()
+    except:
+        # For newer TF 2.x versions where disable_v2_behavior is not available
+        import tensorflow.compat.v1 as tf
+        tf.disable_eager_execution()
+    print(f"Running in TensorFlow 2.x compatibility mode (version {tf.__version__})")
+else:
+    print(f"Running in native TensorFlow 1.x mode (version {tf.__version__})")
+
 BBRegressorParam = loadmat('third_party/landmark68/BBRegressorParam_r.mat')
 mean_face = np.loadtxt('third_party/landmark68/test_mean_face.txt')
 mean_face = mean_face.reshape([68, 2])
