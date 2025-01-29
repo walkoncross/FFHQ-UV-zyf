@@ -14,8 +14,8 @@ def load_face_parsing(save_pth, resnet18_path, device):
     '''face_parsing setup'''
     n_classes = 19
     net = BiSeNet(n_classes=n_classes, resnet18_path=resnet18_path)
+    net.load_state_dict(torch.load(save_pth, map_location='cpu'))
     net.to(device)
-    net.load_state_dict(torch.load(save_pth))
     net.eval()
 
     return net
