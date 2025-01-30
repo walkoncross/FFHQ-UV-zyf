@@ -9,3 +9,13 @@
 /examples/fitting_examples/outputs*
 /debug_data
 /debug*
+__pycache__/*
+*.pyc
+*-bk.*
+*_bk.*
+*copy.*
+.DS_Store
+*.zip
+*.mat
+processed*.*
+processed_data/*
