@@ -97,6 +97,7 @@ def align_img(img, lm, lm3D, skin_mask=None, parse_mask=None, target_size=224., 
     # calculate translation and scale factors using 5 facial landmarks and standard landmarks of a 3D face
     t, s = POS(lm5p.transpose(), lm3D.transpose())
     s = rescale_factor / s
+    t = t.squeeze()
 
     # processing the image
     img_new, lm_new, skin_mask_new, parse_mask_new = resize_n_crop_img(img,
